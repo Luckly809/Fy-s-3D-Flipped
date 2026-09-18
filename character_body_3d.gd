@@ -36,6 +36,8 @@ func _input(event: InputEvent) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	if not is_multiplayer_authority():
+		return
 	Grav = up_direction
 	
 	# Add the gravity.

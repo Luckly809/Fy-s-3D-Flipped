@@ -1,15 +1,15 @@
 extends Node3D
 var peer = ENetMultiplayerPeer.new()
-
+@export var player: PackedScene
+const PLAYER = preload("uid://10mssr510n43")
+var players = []
 @export var Player_scene:PackedScene
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-	
-	
+	Networking.host_created.connect(on_host_created)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,30 +20,33 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 
+func on_host_created():
+	spawn_player(multiplayer.get_unique_id())
+	multiplayer.peer_connected.connect(spawn_player)
+	
+	
+	
+func spawn_player(peer_id:int):
+	var new_player = PLAYER.instantiate()
+	new_player.name = str(peer_id)
+	add_child(new_player)
+	initialize_player(new_player)
 
+
+func initialize_player(player):
+	for other in players:
+		player.add_collision_exception_with(other)
+	players.append(player)
+	
+	
 func _on_host_pressed() -> void:
-	add_player(1)
-	peer.create_server(1028)
-	multiplayer.multiplayer_peer = peer
-	multiplayer.peer_connected.connect(add_player)
+	Networking.host_lobby()
 
-
-func _on_join_pressed() -> void:
-	peer.create_client("27.252.78.173",1028)
-	multiplayer.multiplayer_peer = peer
-	
-func exit_game(id):
-	multiplayer.peer_disconnected.connect(del_player)
-	del_player(id)
-	
-func add_player(id = 1):
-	var player = Player_scene.instantiate()
-	player.name = str(id)
-	call_deferred("add_child",player)
-
-func del_player(id):
-	rpc("_del_player", id)
-	
-@rpc("any_peer","call_local")
-func _del_player(id):
-	get_node(str(id)).queue_free()
+func _on_multiplayer_spawner_spawned(node: Node) -> void:
+	if node is CharacterBody3D:
+		initialize_player(node)
+#func _on_join_pressed() -> void:
+	#peer.create_client("127.0.0.1",1028)
+	#multiplayer.multiplayer_peer = peer
+	#
+	#
