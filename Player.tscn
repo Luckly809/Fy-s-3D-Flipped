@@ -40,10 +40,5 @@ shape = SubResource("CapsuleShape3D_5h11f")
 [node name="Camera3D" type="Camera3D" parent="Neck" unique_id=397882309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44874907, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=5334156]
-transform = Transform3D(-0.25037992, -0.9681477, -4.231908e-08, 0, -4.3711392e-08, 1, -0.9681477, 0.25037992, 1.0944453e-08, -1.1737736, 0, -5.1307275e-08)
-light_energy = 0.5
-shadow_enabled = true
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1707336835]
 replication_config = SubResource("SceneReplicationConfig_xhfnw")

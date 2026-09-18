@@ -23,6 +23,7 @@ albedo_texture = ExtResource("3_cm0pq")
 
 [node name="Node3D" type="Node3D" unique_id=931172584]
 script = ExtResource("1_uu6xs")
+player = ExtResource("2_r0du0")
 Player_scene = ExtResource("2_r0du0")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1024265227]
@@ -124,5 +125,11 @@ offset_bottom = 8.0
 _spawnable_scenes = PackedStringArray("uid://10mssr510n43")
 spawn_path = NodePath("..")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1792860036]
+transform = Transform3D(-0.25037992, -0.9681477, -4.231908e-08, 0, -4.3711392e-08, 1, -0.9681477, 0.25037992, 1.0944453e-08, -1.1737736, 0, -5.1307275e-08)
+light_energy = 0.5
+shadow_enabled = true
+
 [connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
+[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
