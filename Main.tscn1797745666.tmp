@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://d2chlnaxewen0"]
+
+[ext_resource type="Script" uid="uid://burvta0wu3bsb" path="res://character_body_3d.gd" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://mo8ediwpwbus" path="res://main.gd" id="1_uu6xs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_glv2v"]
+sky_top_color = Color(0.75441456, 0.00014939785, 0.65827, 1)
+sky_horizon_color = Color(0.55608344, 0.35976717, 0.5152973, 1)
+ground_horizon_color = Color(0.55608344, 0.35976717, 0.5152973, 1)
+energy_multiplier = 1.25
+
+[sub_resource type="Sky" id="Sky_uu6xs"]
+sky_material = SubResource("ProceduralSkyMaterial_glv2v")
+
+[sub_resource type="Environment" id="Environment_r0du0"]
+background_mode = 2
+sky = SubResource("Sky_uu6xs")
+glow_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bx8n8"]
+radius = 0.07763672
+height = 0.36669922
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5h11f"]
+radius = 0.08251953
+height = 0.31988525
+
+[node name="Node3D" type="Node3D" unique_id=931172584]
+script = ExtResource("1_uu6xs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1676487719]
+environment = SubResource("Environment_r0du0")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=942472380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4744849, -1.386964, 0)
+use_collision = true
+size = Vector3(4.463867, 0, 6.7595215)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1431452620]
+script = ExtResource("1_glv2v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=34789643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20907086, 0)
+mesh = SubResource("CapsuleMesh_bx8n8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1888787081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23306274, 0)
+shape = SubResource("CapsuleShape3D_5h11f")
+
+[node name="Neck" type="Node3D" parent="CharacterBody3D" unique_id=416628588]
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck" unique_id=1980001876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.283, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=262958006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2688723, -2.0265422, 0.08346629)
+use_collision = true
+size = Vector3(8.803711, 0.9013789, 6.7595215)

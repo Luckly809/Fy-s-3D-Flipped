@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://d2chlnaxewen0"]
+
+[ext_resource type="Script" uid="uid://mo8ediwpwbus" path="res://main.gd" id="1_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://10mssr510n43" path="res://Player.tscn" id="2_r0du0"]
+[ext_resource type="Texture2D" uid="uid://gv7nmf2fbf1" path="res://textures/Table_AO.png" id="3_cm0pq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uu6xs"]
+sky_top_color = Color(0.35585397, 0.4670332, 0.5231006, 1)
+sky_horizon_color = Color(0.6559417, 0.6759865, 0.68100345, 1)
+ground_horizon_color = Color(0.6559417, 0.6759865, 0.68100345, 1)
+energy_multiplier = 1.25
+
+[sub_resource type="Sky" id="Sky_r0du0"]
+sky_material = SubResource("ProceduralSkyMaterial_uu6xs")
+
+[sub_resource type="Environment" id="Environment_cm0pq"]
+background_mode = 2
+sky = SubResource("Sky_r0du0")
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3dxm6"]
+albedo_texture = ExtResource("3_cm0pq")
+
+[node name="Node3D" type="Node3D" unique_id=931172584]
+script = ExtResource("1_uu6xs")
+Player_scene = ExtResource("2_r0du0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1024265227]
+environment = SubResource("Environment_cm0pq")
+
+[node name="Platforms" type="Node3D" parent="." unique_id=1906419651]
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Platforms" unique_id=71774319]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.838003, -1.9743459, 0)
+use_collision = true
+size = Vector3(1.6635742, 1.1767637, 6.7595215)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Platforms" unique_id=729156425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.675632, -1.9743459, 0)
+use_collision = true
+size = Vector3(1.6635742, 1.1767637, 6.7595215)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Platforms" unique_id=1359628025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.782913, -1.9743459, 0)
+use_collision = true
+size = Vector3(1.6635742, 1.1767637, 6.7595215)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Platforms" unique_id=1668475395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.72834, -1.9743459, 2.008789)
+use_collision = true
+size = Vector3(1.6635742, 1.1767637, 2.7419434)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Platforms" unique_id=225094503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.214178, -1.6234035, 0.0039901733)
+use_collision = true
+size = Vector3(1.6635742, 1.1767637, 2.7419434)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Platforms" unique_id=1386811589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.781197, 3.4597611, 0.08346629)
+use_collision = true
+size = Vector3(8.803711, 0.9013789, 6.7595215)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Platforms/CSGBox3D8" unique_id=888901772]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.151196, -9.7415905, 0.08346629)
+use_collision = true
+size = Vector3(8.803711, 0.9013789, 6.7595215)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Platforms/CSGBox3D8" unique_id=612632482]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.484066, -9.7415905, 0.08346629)
+use_collision = true
+size = Vector3(10.822876, 0.9013789, 2.102539)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Platforms" unique_id=262958006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2688723, -2.0265422, 0.08346629)
+material_override = SubResource("StandardMaterial3D_3dxm6")
+autosmooth = true
+smoothing_angle = 180.0
+use_collision = true
+size = Vector3(8.803711, 0.9013789, 6.7595215)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Platforms" unique_id=942472380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4744849, -1.9743459, 0)
+use_collision = true
+size = Vector3(4.463867, 1.1767637, 6.7595215)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Platforms/CSGBox3D" unique_id=819475073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45910406, 5.68966, 0)
+use_collision = true
+size = Vector3(6.494629, 1.1767637, 6.7595215)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Platforms" unique_id=743409730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.114063, 3.4597611, 0.08346629)
+use_collision = true
+size = Vector3(10.822876, 0.9013789, 2.102539)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2051630551]
+
+[node name="Host" type="Button" parent="CanvasLayer" unique_id=1373308473]
+anchors_preset = -1
+anchor_left = 0.12900001
+anchor_top = 0.15100001
+anchor_right = 0.12900001
+anchor_bottom = 0.15100001
+offset_left = -146.608
+offset_top = -43.848007
+offset_right = -102.608
+offset_bottom = -12.848007
+text = "Host"
+
+[node name="Join" type="Button" parent="CanvasLayer" unique_id=580332736]
+anchors_preset = -1
+anchor_right = 0.041
+anchor_bottom = 0.101
+offset_top = 89.0
+offset_right = -40.72
+offset_bottom = 10.919998
+text = "Join"
+
+[node name="Exit" type="Button" parent="CanvasLayer" unique_id=1945815454]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1491283356]
+_spawnable_scenes = PackedStringArray("uid://10mssr510n43")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/Join" to="." method="_on_join_pressed"]
