@@ -29,7 +29,7 @@ func _on_host_pressed() -> void:
 
 
 func _on_join_pressed() -> void:
-	peer.create_client("127.0.0.1",1028)
+	peer.create_client("27.252.78.173",1028)
 	multiplayer.multiplayer_peer = peer
 	
 func exit_game(id):
