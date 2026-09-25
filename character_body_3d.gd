@@ -5,13 +5,18 @@ extends CharacterBody3D
 @onready var Multiplayer: Node3D = $"../Node3D"
 @onready var mesh_instance_3d: MeshInstance3D = $MeshInstance3D
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var shader: MeshInstance3D = $Neck/Camera3D/MeshInstance3D
+@onready var label: Label = $Label
+@onready var coyote_time: Timer = $"Coyote time"
+
+
 
 
 
 var SPEED = 2.0
 const JUMP_VELOCITY = 4.5
 const ACCELERATION = 50.0  
-const MOUSE_SENS:float = 0.005
+const MOUSE_SENS:float = 0.01
 @export var Grav = Vector3(0,1,0)
 @export var max_speed = 10.0
 @export var friction = 4
@@ -19,7 +24,7 @@ var Max = 1
 var Min = -1
 var flipped = false
 var Rev = 1
-
+var target: Vector3
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 
@@ -36,16 +41,20 @@ func _input(event: InputEvent) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
+	
+	var was_on_floor = is_on_floor()
+	
 	if not is_multiplayer_authority():
 		return
 	Grav = up_direction
 	
-	# Add the gravity.
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta * Grav
 		
-	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if is_on_wall():
+		velocity += up_direction * 0.8
+	if Input.is_action_just_pressed("Jump") and is_on_floor() or !coyote_time.is_stopped() and Input.is_action_just_pressed("Jump"):
 		velocity += JUMP_VELOCITY * Grav
 		
 	if Input.is_action_just_pressed("Flip ") and is_on_floor():
@@ -65,7 +74,11 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, friction * delta * 10)
 	move_and_slide()
 	
-	if position.y < -10:
+	if was_on_floor and !is_on_floor():
+		coyote_time.start()
+		
+	
+	if position.y < -20:
 		position = Vector3(0, 1, 0)
 		
 	if position.y > 10:

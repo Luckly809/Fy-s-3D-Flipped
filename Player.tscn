@@ -42,3 +42,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44874907, 0)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1707336835]
 replication_config = SubResource("SceneReplicationConfig_xhfnw")
+
+[node name="Label" type="Label" parent="." unique_id=226053832]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Coyote time" type="Timer" parent="." unique_id=145969139]
+wait_time = 0.15
+one_shot = true
