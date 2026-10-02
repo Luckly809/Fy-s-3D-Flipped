@@ -42,6 +42,8 @@ func _input(event: InputEvent) -> void:
 	
 func _physics_process(delta: float) -> void:
 	
+	
+	
 	var was_on_floor = is_on_floor()
 	
 	if not is_multiplayer_authority():

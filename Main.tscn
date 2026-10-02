@@ -26,13 +26,6 @@ environment = SubResource("Environment_cm0pq")
 
 [node name="Platforms" type="Node3D" parent="." unique_id=1906419651]
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Platforms" unique_id=71774319]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.469149, -2.0598166, 0.66612387)
-autosmooth = true
-smoothing_angle = 180.0
-use_collision = true
-size = Vector3(1.6635742, 1.1767637, 6.7595215)
-
 [node name="CSGBox3D5" type="CSGBox3D" parent="Platforms" unique_id=1359628025]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.782913, -1.9743459, 0)
 autosmooth = true
